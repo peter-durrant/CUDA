@@ -31,6 +31,14 @@ $RECYCLE.BIN/
 # Thumbnails
 ._*
 
+# Visual Studio
+Debug/
+Release/
+*.pdb
+*.opensdf
+*.suo
+*.sdf
+
 # Files that might appear in the root of a volume
 .DocumentRevisions-V100
 .fseventsd
