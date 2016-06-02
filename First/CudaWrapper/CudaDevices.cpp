@@ -1,5 +1,8 @@
-#include "cudadevices.h"
-#include "cudaexception.h"
+#include "CudaDevices.h"
+#include "CudaException.h"
+
+using Hdd::Bytes;
+using Hdd::Hertz;
 
 namespace HddCuda
 {
@@ -20,31 +23,6 @@ namespace HddCuda
 			HandleError(error);
 			return properties;
 		}
-	}
-
-	size_t Device::AsKiloBytes(size_t bytes)
-	{
-		return bytes >> 10;
-	}
-
-	size_t Device::AsMegaBytes(size_t bytes)
-	{
-		return bytes >> 20;
-	}
-
-	size_t Device::AsGigaBytes(size_t bytes)
-	{
-		return bytes >> 30;
-	}
-
-	int Device::AsMegaHertz(int kiloHertz)
-	{
-		return kiloHertz / 1000;
-	}
-
-	int Device::AsGigaHertz(int kiloHertz)
-	{
-		return kiloHertz / 1000 / 1000;
 	}
 
 	int Device::GetNumberOfCudaDevices()
@@ -112,6 +90,16 @@ namespace HddCuda
 		}(properties_));
 	}
 
+	Hertz Device::ClockRate() const
+	{
+		return Hertz(properties_.clockRate);
+	}
+
+	Bytes Device::Memory() const
+	{
+		return Bytes(properties_.totalGlobalMem);
+	}
+
 	int Device::NumberOfCudaCores() const
 	{
 		const int coresPerMultiprocessor = NumberOfCudaCoresPerMultiprocessor();
@@ -123,8 +111,8 @@ namespace HddCuda
 		os << "Device:                        " << deviceIndex_ << std::endl;
 		os << "Name:                          " << properties_.name << std::endl;
 		os << "Compute capability:            " << properties_.major << "." << properties_.minor << std::endl;
-		os << "Total global memory:           " << AsGigaBytes(properties_.totalGlobalMem) << " GiB (" << properties_.totalGlobalMem << " bytes)" << std::endl;
-		os << "Clock speed:                   " << AsMegaHertz(properties_.clockRate) << " MHz (" << properties_.clockRate << " kHz)" << std::endl;
+		os << "Total global memory:           " << Memory().AsGigaBytes() << " GiB (" << Memory().AsBytes() << " bytes)" << std::endl;
+		os << "Clock speed:                   " << ClockRate().AsMegaHertz() << " MHz (" << ClockRate().AsKiloHertz() << " kHz)" << std::endl;
 		os << "Streaming multiprocessors:     " << properties_.multiProcessorCount << std::endl;
 		os << "CUDA cores per multiprocessor: " << NumberOfCudaCoresPerMultiprocessor() << std::endl;
 		os << "CUDA cores:                    " << NumberOfCudaCores() << std::endl;

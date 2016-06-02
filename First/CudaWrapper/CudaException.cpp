@@ -1,4 +1,4 @@
-#include "cudaexception.h"
+#include "CudaException.h"
 #include <string>
 #include <sstream>
 

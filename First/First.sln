@@ -4,6 +4,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "First", "First.vcxproj", "{E1B740C8-4DC7-4DE7-B4C8-85BE7F2AE528}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A9E74F71-F369-466F-BE20-C6E22060DC55} = {A9E74F71-F369-466F-BE20-C6E22060DC55}
+		{0CCDB0A7-C3C6-403D-AA1C-8CEA1743B31B} = {0CCDB0A7-C3C6-403D-AA1C-8CEA1743B31B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Units", "Units\Units.vcxproj", "{0CCDB0A7-C3C6-403D-AA1C-8CEA1743B31B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CudaWrapper", "CudaWrapper\CudaWrapper.vcxproj", "{A9E74F71-F369-466F-BE20-C6E22060DC55}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0CCDB0A7-C3C6-403D-AA1C-8CEA1743B31B} = {0CCDB0A7-C3C6-403D-AA1C-8CEA1743B31B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +26,14 @@ Global
 		{E1B740C8-4DC7-4DE7-B4C8-85BE7F2AE528}.Debug|x64.Build.0 = Debug|x64
 		{E1B740C8-4DC7-4DE7-B4C8-85BE7F2AE528}.Release|x64.ActiveCfg = Release|x64
 		{E1B740C8-4DC7-4DE7-B4C8-85BE7F2AE528}.Release|x64.Build.0 = Release|x64
+		{0CCDB0A7-C3C6-403D-AA1C-8CEA1743B31B}.Debug|x64.ActiveCfg = Debug|x64
+		{0CCDB0A7-C3C6-403D-AA1C-8CEA1743B31B}.Debug|x64.Build.0 = Debug|x64
+		{0CCDB0A7-C3C6-403D-AA1C-8CEA1743B31B}.Release|x64.ActiveCfg = Release|x64
+		{0CCDB0A7-C3C6-403D-AA1C-8CEA1743B31B}.Release|x64.Build.0 = Release|x64
+		{A9E74F71-F369-466F-BE20-C6E22060DC55}.Debug|x64.ActiveCfg = Debug|x64
+		{A9E74F71-F369-466F-BE20-C6E22060DC55}.Debug|x64.Build.0 = Debug|x64
+		{A9E74F71-F369-466F-BE20-C6E22060DC55}.Release|x64.ActiveCfg = Release|x64
+		{A9E74F71-F369-466F-BE20-C6E22060DC55}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
